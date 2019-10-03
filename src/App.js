@@ -1,9 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/images/logo.svg';
+import './assets/css/App.css';
+
+// Importar componentes
+import MiComponente from './components/MiComponente';
+import Peliculas from './components/Peliculas';
 
 function App() {
-  var presentacion = <>
+
 
   return (
     <div className="App">
@@ -11,16 +15,15 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+
         </p>
-     
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <section className="componentes">
+
+          <MiComponente />
+          <Peliculas />
+
+        </section>
       </header>
     </div>
   );
