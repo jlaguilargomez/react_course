@@ -326,6 +326,12 @@ textarea{
   font-size:2em;
 }
 
+.favorita{
+  background: green;
+  color: white;
+  padding: 10px
+}
+
 
 /* --- RESPONSIVE --- */
 

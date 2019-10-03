@@ -1,23 +1,35 @@
 import React, { Component } from 'react';
 
 class PeliculaIndiv extends Component {
+
+    marcar = () => {
+        this.props.marcarFavorita(this.props.pelicula)
+    }
+
     render() {
+        const pelicula = this.props.pelicula;
         // Usamos "structuring asignment"
         const { titulo, image } = this.props.pelicula;
 
         return (
-            <article class="article-item">
-                <div class="image-wrap">
+            <article className="article-item">
+                <div className="image-wrap">
                     <img src={image} alt={titulo} />
                 </div>
 
                 <h2>{titulo}</h2>
-                <span class="date">
-                    Hace 5 minutos
+                <span className="date">
+                    Hace 10 minutos
                                 </span>
                 <a href="./article.html">Leer más</a>
 
-                <div class="clearfix"></div>
+                <br />
+
+                <button onClick={this.marcar}>
+                    Marcar como favorita
+                </button>
+
+                <div className="clearfix"></div>
             </article>
         )
     }

@@ -10,16 +10,27 @@ class Peliculas extends Component {
             { titulo: 'Snatch: cerdos y diamantes', image: 'https://i.blogs.es/b37ed8/snatch-poster/450_1000.jpg' }
         ],
         year: 2019,
-        nombre: 'Jose Luis Aguilar'
+        nombre: 'Jose Luis Aguilar',
+        favorita: {}
     }
 
     cambiarTitulo = () =>{
         
         var { peliculas } = this.state;
-        peliculas[0].titulo = "Pocahontas"
+        peliculas[0].titulo = "Pocahontas";
+        peliculas[0].image = 'https://media.metrolatam.com/2018/01/15/pochontas-2fe7c559788df4e930baeb5c487830e2-900x600.jpg';
 
         this.setState({
             peliculas: peliculas
+        })
+    }
+
+    favorita = (pelicula) => {
+        console.log('Favorita marcada');
+        console.log(pelicula);
+
+        this.setState({
+            favorita: pelicula
         })
     }
 
@@ -30,8 +41,15 @@ class Peliculas extends Component {
                 <h2 className="subheader">Peliculas</h2>
                 <p>Selección de las películas favoritas de {this.state.nombre}</p>
 
-                <input type="button" value="cambiar nombre" onClick={this.cambiarTitulo} />
+                <input type="button" value="Ahora en serio..." onClick={this.cambiarTitulo} />
 
+                {this.state.favorita.titulo && 
+                    <p className = "favorita">
+                    <strong>Mi película favorita es:</strong>
+                    <span> {this.state.favorita.titulo}</span>
+                </p>
+                }
+                
 
                 <div id="articles" className = 'peliculas'>
 
@@ -41,6 +59,7 @@ class Peliculas extends Component {
                             <PeliculaIndiv 
                                 key={i} 
                                 pelicula={pelicula}
+                                marcarFavorita = {this.favorita}
                             />
                         )
                     })}
