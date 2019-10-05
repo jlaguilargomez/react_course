@@ -5,9 +5,9 @@ import MiComponente from './MiComponente';
 import Peliculas from './Peliculas';
 import Error from './Error';
 import Header from './Header';
-import Slider from './Slider';
-import Sidebar from './Sidebar';
 import Footer from './Footer';
+import Home from './Home';
+import Blog from './Blog';
 
 class Router extends Component {
     render() {
@@ -17,12 +17,11 @@ class Router extends Component {
 
                 <Header />
 
-                <Slider />
-
-                <div className="center">
+                
                     <Switch>
-                        <Route exact path="/" component={Peliculas}></Route>
-                        <Route exact path="/ruta-prueba" component={SeccionPruebas}></Route>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route exact path="/home" component={Home}></Route>
+                        <Route exact path="/blog" component={Blog}></Route>
                         <Route exact path="/segunda-ruta" component={MiComponente}></Route>
                         <Route exact path="/pagina-1" render={() => (<h1>Hola mundo desde la ruta: H1</h1>)} />
 
@@ -43,9 +42,7 @@ class Router extends Component {
 
                     </Switch>
                     
-                    <Sidebar />
-
-                </div>
+                    
   
                 <div className="clearfix"></div>            
                 <Footer></Footer>
