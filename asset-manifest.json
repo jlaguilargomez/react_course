@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react_course_masterfmws/static/css/main.d1d5d802.chunk.css",
+    "main.js": "/react_course_masterfmws/static/js/main.202f0440.chunk.js",
+    "main.js.map": "/react_course_masterfmws/static/js/main.202f0440.chunk.js.map",
+    "runtime-main.js": "/react_course_masterfmws/static/js/runtime-main.b7591c39.js",
+    "runtime-main.js.map": "/react_course_masterfmws/static/js/runtime-main.b7591c39.js.map",
+    "static/js/2.19119440.chunk.js": "/react_course_masterfmws/static/js/2.19119440.chunk.js",
+    "static/js/2.19119440.chunk.js.map": "/react_course_masterfmws/static/js/2.19119440.chunk.js.map",
+    "index.html": "/react_course_masterfmws/index.html",
+    "precache-manifest.7a0a7f3a403b34cf8b7652a76bab53f1.js": "/react_course_masterfmws/precache-manifest.7a0a7f3a403b34cf8b7652a76bab53f1.js",
+    "service-worker.js": "/react_course_masterfmws/service-worker.js",
+    "static/css/main.d1d5d802.chunk.css.map": "/react_course_masterfmws/static/css/main.d1d5d802.chunk.css.map",
+    "static/media/logo.svg": "/react_course_masterfmws/static/media/logo.25bf045c.svg",
+    "static/media/react.svg": "/react_course_masterfmws/static/media/react.1a36cc4d.svg"
+  }
+}
