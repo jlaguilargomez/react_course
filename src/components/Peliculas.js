@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PeliculaIndiv from './PeliculaIndiv';
+import Slider from './Slider';
+import Sidebar from './Sidebar';
 
 class Peliculas extends Component {
 
@@ -14,8 +16,8 @@ class Peliculas extends Component {
         favorita: {}
     }
 
-    cambiarTitulo = () =>{
-        
+    cambiarTitulo = () => {
+
         var { peliculas } = this.state;
         peliculas[0].titulo = "Pocahontas";
         peliculas[0].image = 'https://media.metrolatam.com/2018/01/15/pochontas-2fe7c559788df4e930baeb5c487830e2-900x600.jpg';
@@ -36,37 +38,53 @@ class Peliculas extends Component {
 
     render() {
         return (
-            <div id="content" className="peliculas">
 
-                <h2 className="subheader">Peliculas</h2>
-                <p>Selección de las películas favoritas de {this.state.nombre}</p>
+            <React.Fragment>
 
-                <input type="button" value="Ahora en serio..." onClick={this.cambiarTitulo} />
-
-                {this.state.favorita.titulo && 
-                    <p className = "favorita">
-                    <strong>Mi película favorita es:</strong>
-                    <span> {this.state.favorita.titulo}</span>
-                </p>
-                }
                 
+                    <Slider 
+                        title="Películas"
+                        size="slider-small"
+                    />
 
-                <div id="articles" className = 'peliculas'>
+                    <div className="center">
+                        
+                        <div id="content" className="peliculas">
+                            <h2 className="subheader">Listado de peliculas</h2>
+                            <p>Selección de las películas favoritas de {this.state.nombre}</p>
 
-                    {this.state.peliculas.map((pelicula, i) => {
-                        return (
-                            // Le envío la key (muy importante para el futuro orden) y el objeto película al completo
-                            <PeliculaIndiv 
-                                key={i} 
-                                pelicula={pelicula}
-                                marcarFavorita = {this.favorita}
-                            />
-                        )
-                    })}
+                            <input type="button" value="Ahora en serio..." onClick={this.cambiarTitulo} />
 
-                </div>
+                            {this.state.favorita.titulo &&
+                                <p className="favorita">
+                                    <strong>Mi película favorita es:</strong>
+                                    <span> {this.state.favorita.titulo}</span>
+                                </p>
+                            }
 
-            </div>
+
+                            <div id="articles" className='peliculas'>
+
+                                {this.state.peliculas.map((pelicula, i) => {
+                                    return (
+                                        // Le envío la key (muy importante para el futuro orden) y el objeto película al completo
+                                        <PeliculaIndiv
+                                        key={i}
+                                        pelicula={pelicula}
+                                        marcarFavorita={this.favorita}
+                                        />
+                                        )
+                                    })}
+
+                            </div>
+                        </div>
+                        <Sidebar blog="false" />
+                
+                    </div>
+
+
+            </React.Fragment>
+
 
         );
     }

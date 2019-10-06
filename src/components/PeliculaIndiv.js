@@ -7,7 +7,7 @@ class PeliculaIndiv extends Component {
     }
 
     render() {
-        const pelicula = this.props.pelicula;
+    
         // Usamos "structuring asignment"
         const { titulo, image } = this.props.pelicula;
 
