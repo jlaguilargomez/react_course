@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Slider from './Slider';
 import Sidebar from './Sidebar';
+import axios from 'axios';
 
 class Blog extends Component {
 
     render() {
+
+        axios.get('http://localhost:3900/api/articles')
+            .then(res => {
+                console.log(res.data)
+            });
 
         return (
 
@@ -13,7 +19,7 @@ class Blog extends Component {
 
                 <div className="center">
                     <div id="content">
-                        <h1 class="subheader">Últimos artículos</h1>
+                        <h1 className="subheader">Últimos artículos</h1>
                     </div>
                     <Sidebar blog="true"/>
                 </div>
