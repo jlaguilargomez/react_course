@@ -1,7 +1,20 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component }  from 'react';
 
-class Arcticles extends Component {
+// Libraries
+import axios from 'axios';
+import Moment from 'react-moment';
+import 'moment/locale/es';
+import { Link } from 'react-router-dom';
+
+// Components
+import Global from '../Global'
+
+// Sources
+import noImage from '../assets/images/noImage.png';
+
+class Articles extends Component {
+
+    url = Global.url;
 
     state = {
         articles: [],
@@ -9,18 +22,57 @@ class Arcticles extends Component {
     }
 
     getArticles = () => {
-        axios.get('http://localhost:3900/api/articles')
+        axios.get(this.url+'api/articles')
             .then(res => {
                 this.setState({
                     articles: res.data.articles,
                     status: 'success'
                 });
-                console.log(this.state)
             });
     }
 
+    getLastArticles = () => {
+        axios.get(this.url+'api/articles/last')
+            .then(res => {
+                this.setState({
+                    articles: res.data.articles,
+                    status: 'success'
+                });
+            });
+    }
+
+    getArticlesBySearch = (searched) => {
+        axios.get(this.url+'api/search/'+searched)
+            .then(res => {
+
+                    this.setState({
+                        articles: res.data.articles,
+                        status: 'success'
+                    });
+
+            })
+            .catch( err => {
+                
+                this.setState({
+                    articles:[],
+                    status: 'success'
+                })
+            });
+    }
+
+
     componentDidMount() {
-        this.getArticles();
+        var home = this.props.home;
+        var search = this.props.search;
+
+        if (home === 'true'){
+            this.getLastArticles();
+        }else if(search && search !== null && search != undefined){
+            this.getArticlesBySearch(search);
+        }else{
+            this.getArticles();
+        };
+        
     }
 
     render() {
@@ -30,13 +82,22 @@ class Arcticles extends Component {
                 return (
                     <article className="article-item">
                         <div className="image-wrap">
-                            <img src="https://www.nomadbubbles.com/wp-content/uploads/0-casas-japonesas_4-570x380.jpg" alt="casa-japon" />
+                            {
+                                article.image != null ? (
+                                    <img 
+                                        src={this.url+'api/get-image/'+article.image} 
+                                        alt={article.title} 
+                                    />
+                                ) : (
+                                    <img src={noImage} alt='no-image' />
+                                )
+                            }
                         </div>
                         <h2>{article.title}</h2>
                         <span className="date">
-                            {article.date}
+                            <Moment fromNow>{article.Moment}</Moment>
                         </span>
-                        <a href="./article.html">Leer más</a>
+                        <Link to={'/blog/articulo/'+article._id}>Leer más</Link>
                         {/* <!-- Volvemos a limpiar "float" --> */}
                         <div className="clearfix"></div>
                     </article>
@@ -67,4 +128,4 @@ class Arcticles extends Component {
     }
 }
 
-export default Arcticles;
+export default Articles;

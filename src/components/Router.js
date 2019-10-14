@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import MiComponente from './MiComponente';
 import Peliculas from './Peliculas';
 import Error from './Error';
@@ -8,6 +8,8 @@ import Footer from './Footer';
 import Home from './Home';
 import Blog from './Blog';
 import Formulario from './Formulario';
+import Search from './Search';
+import Article from './Article';
 
 class Router extends Component {
     render() {
@@ -24,7 +26,18 @@ class Router extends Component {
                         <Route exact path="/blog" component={Blog}></Route>
                         <Route exact path="/formulario" component={Formulario}></Route>
                         <Route exact path="/peliculas" component={Peliculas}></Route>
+                        <Route exact path="/blog/articulo/:id" component={Article}></Route>
+                        <Route exact path="/blog/busqueda/:search" component={Search}></Route>
+                        <Route exact path="/redirect/:search" render={
+                            (props) => {
+                                var search = props.match.params.search;
+                                
+                                return(
+                                    <Redirect to={'/blog/busqueda/'+search}></Redirect>
+                                )
+                            }}>
 
+                        </Route>
                         <Route exact path="/segunda-ruta" component={MiComponente}></Route>
                         <Route exact path="/pagina-1" render={() => (<h1>Hola mundo desde la ruta: H1</h1>)} />
 
